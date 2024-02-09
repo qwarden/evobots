@@ -1,20 +1,28 @@
 import pyrosim.pyrosim as pyrosim
 
-pyrosim.Start_SDF("boxes.sdf")
 
-x = 0
+def Create_World():
+    pyrosim.Start_SDF("world.sdf")
+    pyrosim.Send_Cube(name="Box", pos=[-3, 3, 0.5], size=[1, 1, 1])
+    pyrosim.End()
 
-for _ in range(5):
-    y = 0
-    for _ in range(5):
-        z = 0.5
-        size = [1, 1, 1]
-        for _ in range(10):
-            pyrosim.Send_Cube(name="Box", pos=[x, y, z],
-                              size=size)
-            z += 1
-            size = [i * 0.9 for i in size]
-        y += 1
-    x += 1
 
-pyrosim.End()
+def Create_Robot():
+    pyrosim.Start_URDF("body.urdf")
+    pyrosim.Send_Cube(name="Torso", pos=[1.5, 0, 1.5], size=[1, 1, 1])
+
+    pyrosim.Send_Joint(name="Torso_BackLeg", parent="Torso", child="BackLeg",
+                       type="revolute", position=[1.0, 0, 1.0])
+
+    pyrosim.Send_Cube(name="BackLeg", pos=[-0.5, 0, -0.5], size=[1, 1, 1])
+
+    pyrosim.Send_Joint(name="Torso_FrontLeg", parent="Torso", child="FrontLeg",
+                       type="revolute", position=[2.0, 0, 1.0])
+
+    pyrosim.Send_Cube(name="FrontLeg", pos=[0.5, 0, -0.5], size=[1, 1, 1])
+
+    pyrosim.End()
+
+
+Create_World()
+Create_Robot()
