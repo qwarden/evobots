@@ -20,8 +20,6 @@ class SIMULATION:
         p.disconnect()
 
     def Run(self):
-        # np.save("data/backLegTargetAngles.npy", backLegTargetAngles)
-        # np.save("data/frontLegTargetAngles.npy", frontLegTargetAngles)
         for t in range(c.steps):
             p.stepSimulation()
 
