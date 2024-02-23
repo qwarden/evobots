@@ -1,4 +1,4 @@
-steps = 5000
-sleep = 1/1000
+steps = 500
+sleep = 1/5000
 
 maxForce = 30
