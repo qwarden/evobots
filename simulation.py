@@ -8,7 +8,7 @@ from time import sleep
 
 
 class SIMULATION:
-    def __init__(self, directOrGUI):
+    def __init__(self, directOrGUI, simulationID):
         self.directOrGUI = directOrGUI
 
         if directOrGUI == "DIRECT":
@@ -20,7 +20,7 @@ class SIMULATION:
         p.setGravity(0, 0, -9.8)
 
         self.world = WORLD()
-        self.robot = ROBOT()
+        self.robot = ROBOT(simulationID)
 
     def __del__(self):
         p.disconnect()
