@@ -13,7 +13,7 @@ class SOLUTION:
     def Start_Simulation(self, directOrGUI, background=True):
         self.Create_Brain()
 
-        os.system(f"python3 simulate.py {directOrGUI} {self.myID} {'&' if background else ''}")
+        os.system(f"python3 simulate.py {directOrGUI} {self.myID} 2&>1 {'&' if background else ''}")
 
     def Wait_For_Simulation_To_End(self):
         fitnessFileName = f"fitness/fitness{self.myID}.txt"

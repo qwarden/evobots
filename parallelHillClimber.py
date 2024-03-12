@@ -26,7 +26,6 @@ class PARALLEL_HILL_CLIMBER:
 
         for currentGeneration in range(c.numberOfGenerations):
             print(f"generation: {currentGeneration}")
-            print()
             self.Evolve_For_One_Generation()
 
     def Evolve_For_One_Generation(self):
@@ -61,7 +60,6 @@ class PARALLEL_HILL_CLIMBER:
                 self.parents[parent] = self.children[parent]
 
     def Print(self):
-        print("\n")
         for parent in self.parents.keys():
             print(f"parent={self.parents[parent].fitness} child={self.children[parent].fitness}")
         print()
